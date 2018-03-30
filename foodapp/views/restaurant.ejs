@@ -1,0 +1,12 @@
+<% include partials/header %>
+    <form action="/restaurant" method="POST">
+    <select name= "restaurant">    
+        <% for(var i=0;i < restaurants.length;i++) { %>
+        <option value=<%=restaurants[i]%> > <%=restaurants[i]%>  </option>
+        <% }  %>
+    </select>
+     <button style="width :30%;margin: 25px auto;" class="btn btn-lg btn-primary btn-block">Submit!</button>
+    </form>
+
+
+<% include partials/footer %>    
