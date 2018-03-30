@@ -1,0 +1,9 @@
+<% include partials/header %>
+    
+    <p>The total is <%= total %> </p>
+    <p>Your items are:</p>
+    <% for(var i=0;i<items.length;i++){ %>
+        <p> <%= items[i] %> </p>
+    <% } %>
+    
+<% include partials/footer %>    

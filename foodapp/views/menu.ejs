@@ -1,0 +1,16 @@
+<% include partials/header %>
+    <form action="/menu" method="POST">
+        <% for(var i=0;i<menu[0].length;i++) { %>
+        <div > <%= menu[0][i] %> - <%= menu[1][i] %> </div>
+        <input type="number" name="quantity" placeholder="Quantity" value=0> </input>
+        <br>
+        <% } %>
+        <button style="width :30%;margin: 25px auto;" class="btn btn-lg btn-primary btn-block">Submit!</button>
+    </form>
+    
+    <div id="total">0</div>
+
+
+
+
+<% include partials/footer %> 
