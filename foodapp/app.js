@@ -1,14 +1,43 @@
 var express = require("express");
+var faker = require("faker");
 var app = express();
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 var locations = ["location1", "location2", "location3"]
+
+var lNames = []
+for (var j = 0; j < 3; j++) {
+    lNames.push(faker.address.city())
+}
+
+var rNames = []
+
+for (var j = 0; j < 9; j++) {
+    rNames.push(faker.company.companyName());
+}
+
+
+
+var locationNames = {
+    location1: lNames[0],
+    location2: lNames[1],
+    location3: lNames[2]
+}
+
+
+
+// var restaurants = {
+//     location1: [rNames[0], rNames[1], rNames[2]],
+//     location2: [rNames[3], rNames[4], rNames[5]],
+//     location3: [rNames[6], rNames[7], rNames[8]]
+// };
 
 var restaurants = {
     location1: ["r1", "r2", "r3"],
     location2: ["r4", "r5", "r6"],
     location3: ["r7", "r8", "r9"]
 };
+
 
 var menu = {
     r1: [
@@ -57,7 +86,7 @@ app.get("/", function(req, res) {
 
 
 app.get("/location", function(req, res) {
-    res.render("location.ejs", { locations: locations });
+    res.render("location.ejs", { locations: locations, lNames: lNames });
 });
 
 app.post("/location", function(req, res) {
