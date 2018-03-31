@@ -2,6 +2,7 @@ var express = require("express");
 var faker = require("faker");
 var app = express();
 var bodyParser = require("body-parser");
+var burp = require('burrp').burp;
 app.use(bodyParser.urlencoded({ extended: true }));
 var locations = ["location1", "location2", "location3"]
 
@@ -41,40 +42,40 @@ var restaurants = {
 
 var menu = {
     r1: [
-        ["item1", "item2", "item3"],
-        [10, 15, 20]
+        [burp(), burp(), burp()],
+        [faker.commerce.price(), faker.commerce.price(), faker.commerce.price()]
     ],
     r2: [
-        ["item1", "item2", "item3"],
-        [10, 15, 20]
+        [burp(), burp(), burp()],
+        [faker.commerce.price(), faker.commerce.price(), faker.commerce.price()]
     ],
     r3: [
-        ["item1", "item2", "item3"],
-        [10, 15, 20]
+        [burp(), burp(), burp()],
+        [faker.commerce.price(), faker.commerce.price(), faker.commerce.price()]
     ],
     r4: [
-        ["item1", "item2", "item3"],
-        [10, 15, 20]
+        [burp(), burp(), burp()],
+        [faker.commerce.price(), faker.commerce.price(), faker.commerce.price()]
     ],
     r5: [
-        ["item1", "item2", "item3"],
-        [10, 15, 20]
+        [burp(), burp(), burp()],
+        [faker.commerce.price(), faker.commerce.price(), faker.commerce.price()]
     ],
     r6: [
-        ["item1", "item2", "item3"],
-        [10, 15, 20]
+        [burp(), burp(), burp()],
+        [faker.commerce.price(), faker.commerce.price(), faker.commerce.price()]
     ],
     r7: [
-        ["item1", "item2", "item3"],
-        [10, 15, 20]
+        [burp(), burp(), burp()],
+        [faker.commerce.price(), faker.commerce.price(), faker.commerce.price()]
     ],
     r8: [
-        ["item1", "item2", "item3"],
-        [10, 15, 20]
+        [burp(), burp(), burp()],
+        [faker.commerce.price(), faker.commerce.price(), faker.commerce.price()]
     ],
     r9: [
-        ["item1", "item2", "item3"],
-        [10, 15, 20]
+        [burp(), burp(), burp()],
+        [faker.commerce.price(), faker.commerce.price(), faker.commerce.price()]
     ]
 
 };
@@ -94,8 +95,8 @@ app.post("/location", function(req, res) {
     var location = req.body.location;
     console.log(restaurants[location]);
     res.render("restaurant.ejs", { restaurants: restaurants[location] });
-
 });
+
 var restaurant;
 app.post("/restaurant", function(req, res) {
     console.log("restaurant");
