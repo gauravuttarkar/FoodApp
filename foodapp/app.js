@@ -14,7 +14,7 @@ for (var j = 0; j < 3; j++) {
 var rNames = []
 
 for (var j = 0; j < 9; j++) {
-    rNames.push(faker.company.companyName());
+    rNames.push(faker.name.findName());
 }
 
 
@@ -34,9 +34,27 @@ var locationNames = {
 // };
 
 var restaurants = {
+    location1: ["Onesta", "Dhadoom", "Downtown Burger"],
+    location2: ["PizzaPalace", "NanKing", "LemonTree"],
+    location3: ["Taaza", "Sutra", "Dominoes"]
+};
+
+var restaurantCode = {
     location1: ["r1", "r2", "r3"],
     location2: ["r4", "r5", "r6"],
-    location3: ["r7", "r8", "r9"]
+    location3: ["r7", "r8", "r9"],
+};
+
+var restaurantNames = {
+    r1: "Onesta",
+    r2: "Dhadoom",
+    r3: "Downtown Burger",
+    r4: "PizzaPalace",
+    r5: "NanKing",
+    r6: "LemonTree",
+    r7: "Taaza",
+    r8: "Sutra",
+    r9: "Dominoes"
 };
 
 
@@ -94,7 +112,7 @@ app.post("/location", function(req, res) {
     console.log("hello");
     var location = req.body.location;
     console.log(restaurants[location]);
-    res.render("restaurant.ejs", { restaurants: restaurants[location] });
+    res.render("restaurant.ejs", { restaurantCode: restaurantCode[location], restaurants: restaurants[location] });
 });
 
 var restaurant;
@@ -116,9 +134,12 @@ app.post("/menu", function(req, res) {
 
     //console.log(items);
     console.log(quantity);
+    console.log(menu[restaurant]);
     for (var i = 0; i < quantity.length; i++) {
         total = total + menu[restaurant][1][i] * quantity[i];
-        items.push(menu[restaurant][0][i])
+        if (quantity[i] > 0) {
+            items.push(menu[restaurant][0][i]);
+        }
     }
     console.log(total);
     console.log(items);
