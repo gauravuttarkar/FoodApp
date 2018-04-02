@@ -1,0 +1,13 @@
+<% include partials/header %>
+    <p>Name : <%=name %> </p>
+    <p>Address : <%=address %> </p>
+    <p>Phone : <%=phone %> </p>
+    <p>The total is <%= total %> </p>
+    <p>Your items are:</p>
+    <% for(var i=0;i<items.length;i++){ %>
+        <p> <%= items[i] %> </p>
+    <% } %>
+    <p><a href="/final">Cash On Delivery</a></p>
+    <p><a href="/portal">Online Payment</a></p>
+
+<% include partials/footer %>

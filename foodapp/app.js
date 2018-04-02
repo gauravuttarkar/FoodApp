@@ -108,6 +108,8 @@ app.get("/location", function(req, res) {
     res.render("location.ejs", { locations: locations, lNames: lNames });
 });
 
+
+
 app.post("/location", function(req, res) {
     console.log("hello");
     var location = req.body.location;
@@ -145,6 +147,32 @@ app.post("/menu", function(req, res) {
     console.log(items);
     res.render("bill.ejs", { total: total, items: items });
 });
+
+var name, address, phone;
+
+app.get("/details", function(req, res) {
+    res.render("details.ejs", { total: total });
+});
+
+app.get("/final", function(req, res) {
+    res.render("final.ejs");
+});
+app.get("/portal", function(req, res) {
+    res.render("portal.ejs");
+});
+
+
+app.get("/payment", function(req, res) {
+    res.render("payment.ejs");
+});
+
+app.post("/details", function(req, res) {
+    name = req.body.name;
+    address = req.body.address;
+    phone = req.body.phone;
+    res.render("payment.ejs", { name: name, address: address, phone: phone, items: items, total: total });
+});
+
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("The server has started");
